@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twitch عربي</title>
+<style>
+body{background:#101014;color:white;font-family:Arial;text-align:center;padding:18px}
+h1{color:#b58aff}
+input,button{padding:13px;border-radius:10px;border:0;margin:6px;font-size:16px}
+input{width:85%;background:#292932;color:white}
+button{background:#9147ff;color:white}
+iframe{width:100%;aspect-ratio:16/9;border:0;margin-top:20px}
+.caption{background:#222;padding:18px;border-radius:12px;font-size:20px;margin-top:12px}
+</style>
+</head>
+<body>
+<h1>🎮 Twitch عربي</h1>
+<p>شاهد بثك المفضل</p>
+<input id="channel" placeholder="اسم قناة Twitch" dir="ltr">
+<br>
+<button onclick="play()">تشغيل البث</button>
+<div id="player"></div>
+<div class="caption" id="caption">
+الترجمة العربية ستظهر هنا
+</div>
+<script>
+function play(){
+let name=document.getElementById('channel').value.trim();
+if(!/^[a-zA-Z0-9_]{1,25}$/.test(name)){
+alert('اكتب اسم قناة صحيح');
+return;
+}
+document.getElementById('player').innerHTML=
+'<iframe allowfullscreen src="https://player.twitch.tv/?channel='+encodeURIComponent(name)+'&parent='+location.hostname+'&muted=true"></iframe>';
+}
+</script>
+</body>
+</html>
